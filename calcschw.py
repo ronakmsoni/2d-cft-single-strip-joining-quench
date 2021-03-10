@@ -1,13 +1,22 @@
+# This code takes a set of points written in output/angles.txt and calculates the Schwarzian of the doubly-connected Schwarz-Christoffel (DSC) map.
+# The parameters of the map need to be manually input into the code.
+#
+# As written, this code only handles points at the reflection-symmetric slice in a specific DSC map (to a plane with two slits arranged in an inversion symmetric fashion), but it can be easily modified.
+
 import math
 import numpy
 
 pi = math.pi
 e = math.e
 
+# Parameters of DSC map.
 eps = .00001 #Sets the scale for the slits' ends
 mu = 0.4837679155890 #annulus inner radius, from fortran. read off DSCPACK.OUTPUT
-absz = 0.695579886 #pre-image of time slice
-tol = 0 # 1E-20 
+beta = [ [1,-3],  [1,1] ] #Slit exponents
+pvs = [ [1,-1],[ mu, -1*mu ]  ] #Prevertices
+
+absz = math.sqrt(mu) #pre-image of time slice
+tol = 1E-20 
 
 npt = 2000
 width = 2
@@ -16,8 +25,6 @@ NConv = 25
 NConv2 = 20
 
 
-beta = [ [1,-3],  [1,1] ] #Slit exponents
-pvs = [ [1,-1],[ mu, -1*mu ]  ] #Prevertices
 
 #Generate testing grid
 nTestR = 100
@@ -29,7 +36,7 @@ for i in range(1,nTestR):
         phi = -pi + 2*pi*j/nTestA
         testPts.append( rad * e**(phi*1j) )
 
-#Full pre-Schwarzian
+#Full pre-Schwarzian f''/f'
 #deLillo-Elcrat-Pfaltzgraff 2001, eqn 8
 def pre_schw_full (N, z):
     preSchw = 0
@@ -46,7 +53,7 @@ def pre_schw_full (N, z):
 #    if abs(pre_schw_full(NConv,pt) - pre_schw_full(NConv+1,pt)) > tol:
 #        errors.append(abs(pre_schw_full(NConv,pt) - pre_schw_full(NConv+1,pt)))
 #print(errors)
-#
+
 #Calculates the Schwarzian
 def schw(N,z):
     sch = - .5 * pre_schw_full(N,z)**2
