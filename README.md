@@ -14,6 +14,7 @@ A short description of the various files:
 2. `schwdriver.f` calculates the derivatives of the conformal map for a quench manifold in which the distance between the slits is `1E-5`. It saves the derivative of the map between the annulus and the quench manifold above to `wprods.txt`; and also the derivatives of a closely related map from a finite cylinder to an infinite cylinder with reflection-symmetric slits to `sprime.txt`
 3. `calcschw.py` uses formulae from [1] to calculate the Schwarzian of the conformal map.
 
-
+```
 [1]: DeLillo, T. K., Elcrat, A. R., & Pfaltzgraff, J. A. (2001). Schwarz--Christoffel Mapping of the Annulus. SIAM review, 43(3), 469-477. <https://doi.org/10.1137/S0036144500375280>  
 [2]: <http://www.netlib.org/toms-2014-06-10/785>
+```
