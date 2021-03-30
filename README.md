@@ -1,7 +1,7 @@
 # 2d-cft-single-strip-joining-quench
 Code for calculations about a local quench in 2d CFT involving taking two ends of a strip and joining them.
 
-This code accompanies section 4.3 in [`arXiv:2103.14746`](https://arxiv.org/2103.14746), but should be helpful in a more general context.
+This code accompanies section 4.3 in [`arXiv:2103.14746`](https://arxiv.org/abs/2103.14746), but should be helpful in a more general context.
 
 Calculations in this quench set-up involves, on the first hand, calculating a specific conformal transformation between an annulus and a second 'quench' manifold, known as a doubly connected Schwarz-Christoffel map.[1]
 The quench manifold is an plane with two slits on the real line, arranged to be symmetric under an inversion about a circle of radius `1`; the slits nearly touch each other.
